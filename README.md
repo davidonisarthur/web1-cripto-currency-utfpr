@@ -2,6 +2,8 @@
 
 **Autor:** Arthur Otavio Rodrigues Davidonis.
 
+**Site:** https://davidonisarthur.github.io/web1-cripto-currency-utfpr/
+
 Serviço acadêmico para consultar Bitcoin, Ethereum e Solana em reais e dólares. HTML, CSS e JavaScript puro; sem back-end, frameworks, carteira ou cadastro.
 
 ## Executar
