@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Consulte Bitcoin, Ethereum e Solana em reais ou dólares e converta quantidades de criptomoedas com o CriptoCotação.">
+  <meta name="theme-color" content="#122c29">
+  <title>CriptoCotação — cripto em reais e dólares</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <a class="skip-link" href="#cotador">Pular para o cotador</a>
+  <header class="site-header container">
+    <a class="brand" href="./" aria-label="CriptoCotação, início"><span class="brand-mark" aria-hidden="true">↗</span>Cripto<span>Cotação</span></a>
+    <nav aria-label="Principal"><a href="#cotador">Cotador</a><a href="#como-funciona">Como funciona</a></nav>
+  </header>
+  <main class="container">
+    <section class="intro" aria-labelledby="titulo">
+      <p class="eyebrow">MENOS ABAS. MAIS CLAREZA.</p>
+      <h1>Quanto vale sua<br>cripto <em>agora?</em></h1>
+      <p>Consulte a cotação e transforme Bitcoin, Ethereum ou Solana em reais e dólares. Simples assim.</p>
+    </section>
+    <div class="workspace">
+      <section class="panel tool" id="cotador" aria-labelledby="cotador-titulo">
+        <div class="section-heading"><div><p class="eyebrow">01 / COTADOR</p><h2 id="cotador-titulo">Do cripto para o seu dia a dia.</h2></div><span class="tag">BRL · USD</span></div>
+        <form id="quote-form">
+          <div class="fields">
+            <div><label for="coin">Criptomoeda</label><select id="coin" name="coin"><option value="bitcoin">Bitcoin · BTC</option><option value="ethereum">Ethereum · ETH</option><option value="solana">Solana · SOL</option></select></div>
+            <div><label for="currency">Converter para</label><select id="currency" name="currency"><option value="brl">Real brasileiro · BRL</option><option value="usd">Dólar americano · USD</option></select></div>
+            <div class="quantity-field"><label for="amount">Quantidade de cripto</label><input id="amount" name="amount" type="text" inputmode="decimal" value="1" maxlength="24" autocomplete="off" required aria-describedby="amount-help amount-error"><small id="amount-help">Use vírgula ou ponto decimal, sem separador de milhar. Ex.: 0,5</small><p id="amount-error" class="error" hidden></p></div>
+          </div>
+          <button class="primary" type="submit" id="refresh">Consultar cotação <span aria-hidden="true">↗</span></button>
+        </form>
+        <p id="status" role="status">Escolha uma moeda para começar.</p>
+        <div id="result" class="result" aria-busy="false">
+          <p class="eyebrow">VALOR ESTIMADO</p><output id="total" for="amount coin currency">—</output>
+          <p id="unit-price">A cotação aparecerá aqui.</p>
+          <div class="result-meta"><span id="change">Variação em 24h: —</span><span id="updated">Aguardando consulta</span></div>
+        </div>
+        <div class="actions"><button type="button" id="copy" disabled>Copiar resultado</button><button type="button" id="share" hidden disabled>Compartilhar</button></div>
+        <p id="action-status" role="status" class="muted"></p>
+        <p class="source">Dados fornecidos por <a href="https://www.coingecko.com/">CoinGecko</a>. Valores indicativos, sem taxas de negociação.</p>
+      </section>
+      <aside class="sidebar" aria-label="Resumo e publicidade">
+        <section class="panel market" aria-labelledby="market-title"><p class="eyebrow">DE OLHO NO MERCADO</p><h2 id="market-title">Três moedas. Um lugar.</h2><p class="muted">Preço de uma unidade na moeda escolhida.</p><ul id="market-list"><li>Bitcoin <span>—</span></li><li>Ethereum <span>—</span></li><li>Solana <span>—</span></li></ul></section>
+        <div class="ad" aria-label="Espaço publicitário demonstrativo"><span>PUBLICIDADE</span><p>Seu próximo projeto<br>pode estar aqui.</p><small>Espaço reservado · sem anúncios ativos</small></div>
+      </aside>
+    </div>
+    <section class="instructions" id="como-funciona" aria-labelledby="instructions-title"><p class="eyebrow">SEM COMPLICAÇÃO</p><h2 id="instructions-title">Da dúvida ao valor em três passos.</h2><ol class="steps"><li><span>01</span><h3>Escolha sua moeda</h3><p>Selecione a criptomoeda e veja os valores em reais ou dólares.</p></li><li><span>02</span><h3>Informe a quantidade</h3><p>Simule uma unidade ou uma fração. A conversão acompanha o que você digita.</p></li><li><span>03</span><h3>Leve o resultado</h3><p>Copie a estimativa com a fonte e o horário para consultar depois.</p></li></ol></section>
+    <section class="notes" aria-labelledby="notes-title"><h2 id="notes-title">O que este valor significa?</h2><p>A cotação é uma referência de mercado, não uma oferta de compra ou venda. O preço pode mudar, e corretoras podem cobrar taxas. Confira o horário informado antes de usar o resultado.</p><p>As consultas dependem da disponibilidade da API. Não é necessário conectar carteira ou informar dados pessoais.</p></section>
+    <noscript><p class="error">Ative o JavaScript para consultar e converter as cotações.</p></noscript>
+  </main>
+  <footer class="container site-footer"><span class="brand">CriptoCotação<span class="muted"> / projeto acadêmico</span></span><a href="https://davidonisarthur.github.io/site-pessoal-web1-utfpr/">Arthur Otavio Rodrigues Davidonis ↗</a></footer>
+</body>
+</html>
