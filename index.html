@@ -41,6 +41,8 @@
         </div>
         <div class="actions"><button type="button" id="copy" disabled>Copiar resultado</button><button type="button" id="share" hidden disabled>Compartilhar</button></div>
         <p id="action-status" role="status" class="muted"></p>
+        <div id="manual-copy" hidden><label for="copy-text">Resultado para copiar manualmente</label><textarea id="copy-text" rows="4" readonly></textarea></div>
+        <p id="preference-status" class="muted">Moeda e unidade são salvas somente neste navegador.</p>
         <p class="source">Dados fornecidos por <a href="https://www.coingecko.com/">CoinGecko</a>. Valores indicativos, sem taxas de negociação.</p>
       </section>
       <aside class="sidebar" aria-label="Resumo e publicidade">
@@ -49,7 +51,7 @@
       </aside>
     </div>
     <section class="instructions" id="como-funciona" aria-labelledby="instructions-title"><p class="eyebrow">SEM COMPLICAÇÃO</p><h2 id="instructions-title">Da dúvida ao valor em três passos.</h2><ol class="steps"><li><span>01</span><h3>Escolha sua moeda</h3><p>Selecione a criptomoeda e veja os valores em reais ou dólares.</p></li><li><span>02</span><h3>Informe a quantidade</h3><p>Simule uma unidade ou uma fração. A conversão acompanha o que você digita.</p></li><li><span>03</span><h3>Leve o resultado</h3><p>Copie a estimativa com a fonte e o horário para consultar depois.</p></li></ol></section>
-    <section class="notes" aria-labelledby="notes-title"><h2 id="notes-title">O que este valor significa?</h2><p>A cotação é uma referência de mercado, não uma oferta de compra ou venda. O preço pode mudar, e corretoras podem cobrar taxas. Confira o horário informado antes de usar o resultado.</p><p>As consultas dependem da disponibilidade da API. Não é necessário conectar carteira ou informar dados pessoais.</p></section>
+    <section class="notes" aria-labelledby="notes-title"><h2 id="notes-title">O que este valor significa?</h2><p>A cotação é uma referência de mercado, não uma oferta de compra ou venda. O preço pode mudar, e corretoras podem cobrar taxas. Confira o horário informado antes de usar o resultado.</p><p>As consultas dependem da disponibilidade da API. Não é necessário conectar carteira ou informar dados pessoais.</p><p>Somente a escolha de moeda e unidade fica salva no seu navegador. A quantidade digitada não é armazenada nem enviada à API. Para remover as preferências, limpe os dados deste site no navegador.</p></section>
     <noscript><p class="error">Ative o JavaScript para consultar e converter as cotações.</p></noscript>
   </main>
   <footer class="container site-footer"><span class="brand">CriptoCotação<span class="muted"> / projeto acadêmico</span></span><a href="https://davidonisarthur.github.io/site-pessoal-web1-utfpr/">Arthur Otavio Rodrigues Davidonis ↗</a></footer>

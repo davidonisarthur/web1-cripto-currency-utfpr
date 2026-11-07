@@ -1,5 +1,6 @@
 import { COINS, money, parseAmount } from './core.js';
 import { fetchQuotes } from './api.js';
+import { readPreferences, savePreferences } from './storage.js';
 
 const $ = id => document.getElementById(id);
 let quotes = {};
@@ -7,6 +8,12 @@ let loading = false;
 let lastAttempt = 0;
 let refreshFailed = false;
 let resultText = '';
+let storage;
+try { storage = window.localStorage; } catch { /* A consulta funciona sem armazenamento. */ }
+const preferences = readPreferences(storage);
+$('coin').value = preferences.coin;
+$('currency').value = preferences.currency;
+$('share').hidden = typeof navigator.share !== 'function';
 
 function render() {
   const coin = COINS.find(item => item.id === $('coin').value);
@@ -69,8 +76,43 @@ async function refresh() {
 
 $('quote-form').addEventListener('submit', event => { event.preventDefault(); refresh(); });
 for (const id of ['coin', 'currency', 'amount']) {
-  $(id).addEventListener(id === 'amount' ? 'input' : 'change', () => { $('action-status').textContent = ''; render(); });
+  $(id).addEventListener(id === 'amount' ? 'input' : 'change', () => {
+    $('action-status').textContent = '';
+    $('manual-copy').hidden = true;
+    if (id !== 'amount') {
+      const saved = savePreferences(storage, { coin: $('coin').value, currency: $('currency').value });
+      $('preference-status').textContent = saved ? 'Moeda e unidade salvas somente neste navegador.' : 'O navegador não permitiu salvar suas preferências. A consulta continua funcionando.';
+    }
+    render();
+  });
 }
+
+function showManualCopy(text) {
+  $('manual-copy').hidden = false;
+  $('copy-text').value = text;
+  $('copy-text').focus();
+  $('copy-text').select();
+  $('action-status').textContent = 'Não foi possível copiar automaticamente. Copie o texto selecionado abaixo.';
+}
+
+$('copy').addEventListener('click', async () => {
+  if (!resultText) return;
+  const text = resultText;
+  try {
+    if (!navigator.clipboard?.writeText) throw new Error('Clipboard indisponível');
+    await navigator.clipboard.writeText(text);
+    $('action-status').textContent = 'Resultado copiado com a fonte e o horário da cotação.';
+  } catch { showManualCopy(text); }
+});
+$('share').addEventListener('click', async () => {
+  if (!resultText || !navigator.share) return;
+  try {
+    await navigator.share({ title: 'CriptoCotação', text: resultText });
+    $('action-status').textContent = 'Resultado compartilhado.';
+  } catch (error) {
+    $('action-status').textContent = error.name === 'AbortError' ? 'Compartilhamento cancelado.' : 'Não foi possível compartilhar. Use Copiar resultado.';
+  }
+});
 render();
 refresh();
 // Reavalia a indicação de cotação antiga sem consultar a API automaticamente.

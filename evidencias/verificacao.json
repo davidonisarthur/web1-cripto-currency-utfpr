@@ -1,0 +1,31 @@
+{
+  "live": {
+    "status": "Consulta concluída. Troque a moeda ou a quantidade para converter sem uma nova consulta.",
+    "total": "R$ 416.976,00"
+  },
+  "screens": [
+    {
+      "width": 375,
+      "overflow": false,
+      "controlsFit": true
+    },
+    {
+      "width": 768,
+      "overflow": false,
+      "controlsFit": true
+    },
+    {
+      "width": 1200,
+      "overflow": false,
+      "controlsFit": true
+    }
+  ],
+  "simulatedTests": [
+    "Conversão com vírgula decimal",
+    "Troca BRL/USD",
+    "Preferências após recarregar",
+    "Rejeição de valor negativo",
+    "Fallback de Clipboard bloqueado",
+    "Erro HTTP 429 sem resultado fictício"
+  ]
+}
