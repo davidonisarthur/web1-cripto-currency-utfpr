@@ -2,17 +2,23 @@
 
 **Autor:** Arthur Otavio Rodrigues Davidonis.
 
-**Site:** https://davidonisarthur.github.io/web1-cripto-currency-utfpr/
+**Site publicado:** [Acessar o CriptoCotação](https://davidonisarthur.github.io/web1-cripto-currency-utfpr/)
 
 Serviço acadêmico para consultar Bitcoin, Ethereum e Solana em reais e dólares. HTML, CSS e JavaScript puro; sem back-end, frameworks, carteira ou cadastro.
 
 ## Executar
 
-Na pasta do projeto, execute `python -m http.server 8000` e abra http://localhost:8000.
+Pré-requisito: Python 3 para o servidor local. Na pasta do projeto, execute:
+
+```bash
+python -m http.server 8000
+```
+
+Abra http://localhost:8000. Use um servidor HTTP para carregar os módulos JavaScript; não abra apenas o arquivo pelo protocolo `file://`. Para encerrar, pressione `Ctrl+C`.
 
 ## Etapas
 
-As branches são encadeadas; cada etapa inclui a anterior:
+A versão completa está na branch `main`. O desenvolvimento foi separado nas seguintes branches encadeadas, preservadas no repositório:
 
 1. `feat/interface-cotador`: estrutura semântica e interface Mobile First.
 2. `feat/cotacoes-conversao`: API pública, conversão, carregamento e tratamento de erros.
@@ -31,6 +37,17 @@ O rodapé aponta para o [site pessoal do autor](https://davidonisarthur.github.i
 - Clipboard com alternativa manual e Web Share nos navegadores compatíveis. A quantidade não é salva nem enviada à API.
 - Layout Mobile First, rótulos, mensagens de status e foco de teclado.
 
+## Organização dos arquivos
+
+- `index.html`: estrutura, formulário, instruções e link para o site pessoal.
+- `style.css`: apresentação Mobile First, Grid e Flexbox.
+- `js/app.js`: eventos, renderização, conversão e recursos de cópia/compartilhamento.
+- `js/api.js`: consulta HTTP, timeout e tratamento de falhas da API.
+- `js/core.js`: moedas suportadas, validação e formatação dos valores.
+- `js/storage.js`: leitura e gravação das preferências locais.
+- `tests/`: testes automatizados sem dependências externas.
+- `evidencias/`: capturas e resultados da validação no navegador.
+
 ## API e assincronismo
 
 [CoinGecko Keyless Public API](https://docs.coingecko.com/docs/keyless-public-api), endpoint [`/simple/price`](https://docs.coingecko.com/reference/simple-price). Não usa chaves ou segredos. `fetch`, Promises e `async/await` consultam os dados; `AbortController` limita o tempo de espera. As moedas são agrupadas em uma requisição, dispensando consultas paralelas redundantes.
@@ -47,6 +64,6 @@ Capturas da consulta real: [mobile](evidencias/375.png), [tablet](evidencias/768
 
 ## Publicação e monetização
 
-Site estático compatível com GitHub Pages. Publique a pasta raiz da branch `feat/preferencias-compartilhamento`, que contém todas as etapas, ou da `main` após integrar as branches.
+Site estático publicado no GitHub Pages a partir da pasta raiz (`/`) da branch `main`. Novos commits enviados à `main` atualizam a publicação automaticamente, após a conclusão do build do GitHub Pages.
 
 A interface reserva um espaço publicitário demonstrativo, sem rastreadores ou anúncios ativos. Uma possível monetização futura é patrocínio contextual. Antes de uso comercial, revisar a licença e o plano da API; o endpoint público sem chave não é indicado para cargas de produção. Não colocar chaves privadas no JavaScript.
